@@ -16,13 +16,13 @@
             android:layout_height="108dp"
             app:srcCompat="@mipmap/ic_launcher"
             android:layout_weight="1"
-            android:id="@+id/imageButton1" />
+            android:id="@+id/imgLocal" />
 
         <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="108dp"
             app:srcCompat="@mipmap/ic_launcher"
-            android:id="@+id/imageButton2"
+            android:id="@+id/imgRemota"
             android:layout_weight="1" />
 
     </LinearLayout>

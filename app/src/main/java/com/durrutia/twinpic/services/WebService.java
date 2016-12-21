@@ -18,13 +18,18 @@ import retrofit2.http.Path;
  */
 
 public interface WebService {
-    String BASE_URL = "http://192.168.1.103:8080/";
+    //direccion del servidor
+    String BASE_URL = "http://172.16.35.2:8080/";
+    //envia la @PIC y recibe un TWIN.
     @POST("postPic")
     Call<Twin> enviarPic(@Body Pic pic);
 
     @GET("prueba/{user}")
     Call<Pic> obtenerPic(@Path("user") String user);
 
+    /**
+     * Metodo necesario para gestionar Retrofit
+     */
     class Factory{
         private  static WebService service;
 

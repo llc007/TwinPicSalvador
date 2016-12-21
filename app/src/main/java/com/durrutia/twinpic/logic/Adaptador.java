@@ -2,7 +2,6 @@ package com.durrutia.twinpic.logic;
 
 import android.app.Activity;
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,11 +14,14 @@ import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
+import lombok.extern.slf4j.Slf4j;
+
 /**
- * Created by LuisLopez on 20/12/2016.
+ * @author  LuisLopez on 20/12/2016.
+ * @version 20162112
  * Metodo que implementa un adaptador el cual usa picasso para poner las imagenes en el ImageButton
  */
-
+@Slf4j
 public class Adaptador extends BaseAdapter {
     private Activity activity;
     private ArrayList<FotosPareadas> pictures;
@@ -44,6 +46,13 @@ public class Adaptador extends BaseAdapter {
         return 1;
     }
 
+    /**
+     *
+     * @param position
+     * @param convertView
+     * @param parent
+     * @return
+     */
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         View v = convertView;
@@ -52,13 +61,15 @@ public class Adaptador extends BaseAdapter {
             LayoutInflater inf = (LayoutInflater) activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             v = inf.inflate(R.layout.activity_separador,null);
         }
+        //detecto el par de fotos
         final FotosPareadas pic = pictures.get(position);
+        final ImageButton imgLeft = (ImageButton) v.findViewById(R.id.imgLocal);
+        final ImageButton imgRight = (ImageButton) v.findViewById(R.id.imgRemota);
 
-        final ImageButton imgLeft = (ImageButton) v.findViewById(R.id.imageButton1);
-        final ImageButton imgRight = (ImageButton) v.findViewById(R.id.imageButton2);
+        //Direccion del servidor
+        String server ="http://172.16.35.2:8080/";
+        //log.debug("DENTRO DEL ADAPTADOR",server + pic.local.getUrl());
 
-        String server ="http://192.168.1.103:8080/";
-        Log.d("DENTRO DEL ADAPTADOR",server + pic.local.getUrl());
         Picasso.with(this.activity)
                 .load(server + pic.local.getUrl())
                 .resize(600,600)
@@ -66,7 +77,7 @@ public class Adaptador extends BaseAdapter {
                 .noPlaceholder()
                 .into(imgLeft);
 
-        Log.d("DENTRO DEL ADP REMOTA",server + pic.remota.getUrl());
+        //log.debug("DENTRO DEL ADP REMOTA",server + pic.remota.getUrl());
         Picasso.with(this.activity)
                 .load(server + pic.remota.getUrl())
                 .resize(600,600)
