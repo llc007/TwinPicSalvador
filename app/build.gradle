@@ -57,7 +57,7 @@ dependencies {
 
     // Testing modules
     testCompile 'junit:junit:4.12'
-
+    compile group: 'com.squareup.picasso', name: 'picasso', version: '2.5.2'
     // Roboelectric
     testCompile "org.robolectric:robolectric:3.1.4"
     testCompile group: 'javax.annotation', name: 'javax.annotation-api', version: '1.3'
@@ -106,5 +106,11 @@ dependencies {
     annotationProcessor "com.github.Raizlabs.DBFlow:dbflow-processor:${dbflow_version}"
     compile "com.github.Raizlabs.DBFlow:dbflow-core:${dbflow_version}"
     compile "com.github.Raizlabs.DBFlow:dbflow:${dbflow_version}"
+
+    //RetroFit
+    // Google GSON
+    compile 'com.google.code.gson:gson:2.8.0'
+    compile 'com.squareup.retrofit2:converter-gson:2.1.0'
+    compile 'com.squareup.retrofit2:retrofit:2.1.0'
 
 }

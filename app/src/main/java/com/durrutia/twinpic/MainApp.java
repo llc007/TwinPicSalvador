@@ -4,6 +4,8 @@ import android.app.Application;
 
 import com.durrutia.twinpic.util.DeviceUtils;
 import com.google.common.base.Stopwatch;
+import com.raizlabs.android.dbflow.config.FlowConfig;
+import com.raizlabs.android.dbflow.config.FlowManager;
 import com.squareup.leakcanary.LeakCanary;
 
 import lombok.extern.slf4j.Slf4j;
@@ -33,6 +35,9 @@ public class MainApp extends Application {
 
         // Startdate
         final Stopwatch stopwatch = Stopwatch.createStarted();
+        // This instantiates DBFlow
+        FlowManager.init(new FlowConfig.Builder(this).build());
+        FlowManager.getDatabase(Database.class).getWritableDatabase();
 
         log.debug("Install LeakCanary in {}.", DeviceUtils.getDeviceName(this));
 

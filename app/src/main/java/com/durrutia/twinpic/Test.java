@@ -14,7 +14,6 @@ import com.raizlabs.android.dbflow.sql.language.SQLite;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.apache.commons.lang3.RandomUtils;
 
-import java.util.Date;
 import java.util.List;
 
 import lombok.extern.slf4j.Slf4j;
@@ -64,7 +63,7 @@ public final class Test {
                         .deviceId(DeviceUtils.getDeviceId(context))
                         .latitude(RandomUtils.nextDouble())
                         .longitude(RandomUtils.nextDouble())
-                        .date(new Date().getTime())
+                        .date("00")
                         .url("http://" + RandomStringUtils.randomAlphabetic(20))
                         .positive(RandomUtils.nextInt(0, 100))
                         .negative(RandomUtils.nextInt(0, 100))
@@ -99,7 +98,7 @@ public final class Test {
                 final Pic local = SQLite.select().from(Pic.class).where(Pic_Table.id.is(i)).querySingle();
                 final Pic remote = SQLite.select().from(Pic.class).where(Pic_Table.id.is(i + 1)).querySingle();
 
-                final Twin twin = Twin.builder().local(local).remote(remote).build();
+                final Twin twin = Twin.builder().local(local).remota(remote).build();
                 log.debug("Twin: {}", twin);
 
                 twin.save();

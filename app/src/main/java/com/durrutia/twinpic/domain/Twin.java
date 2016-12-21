@@ -1,6 +1,7 @@
 package com.durrutia.twinpic.domain;
 
 import com.durrutia.twinpic.Database;
+import com.raizlabs.android.dbflow.annotation.Column;
 import com.raizlabs.android.dbflow.annotation.ForeignKey;
 import com.raizlabs.android.dbflow.annotation.PrimaryKey;
 import com.raizlabs.android.dbflow.annotation.Table;
@@ -15,8 +16,8 @@ import lombok.extern.slf4j.Slf4j;
 /**
  * Clase que relaciona 2 {@link Pic}.
  *
- * @author Diego P. Urrutia Astorga
- * @version 20161102
+ * @author Luis Lopez
+ *
  */
 @Slf4j
 @AllArgsConstructor
@@ -33,6 +34,7 @@ public class Twin extends BaseModel {
     /**
      * Pic local
      */
+    @Column
     @Getter
     @Setter
     @PrimaryKey
@@ -42,10 +44,11 @@ public class Twin extends BaseModel {
     /**
      * Pic desde el servidor
      */
+    @Column
     @Getter
     @Setter
     @PrimaryKey
     @ForeignKey(tableClass = Pic.class)
-    Pic remote;
+    Pic remota;
 
 }

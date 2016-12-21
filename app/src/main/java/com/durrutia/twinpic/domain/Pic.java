@@ -1,6 +1,7 @@
 package com.durrutia.twinpic.domain;
 
 import com.durrutia.twinpic.Database;
+import com.raizlabs.android.dbflow.annotation.Column;
 import com.raizlabs.android.dbflow.annotation.PrimaryKey;
 import com.raizlabs.android.dbflow.annotation.Table;
 
@@ -8,13 +9,14 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 
 /**
  * Pic
  *
- * @author Diego P. Urrutia Astorga
- * @version 20161102
+ * @author Luis Lopez
+ *
  */
 @Slf4j
 @AllArgsConstructor
@@ -31,56 +33,72 @@ public class Pic extends BaseModel {
     /**
      * Identificador unico
      */
-    @Getter
+    @Getter     @Setter
+    @Column
     @PrimaryKey(autoincrement = true)
     Long id;
 
     /**
      * Identificador del dispositivo
      */
-    @Getter
+    @Getter     @Setter
+    @Column
     String deviceId;
 
     /**
      * Fecha de la foto
      */
-    @Getter
-    Long date;
+    @Column
+    @Getter     @Setter
+    String date;
 
     /**
      * URL de la foto
      */
-    @Getter
+    @Column
+    @Getter     @Setter
     String url;
 
     /**
      * Latitud
      */
-    @Getter
+    @Column
+    @Getter     @Setter
     Double latitude;
 
     /**
      * Longitud
      */
-    @Getter
+    @Column
+    @Getter     @Setter
     Double longitude;
 
     /**
      * Numero de likes
      */
-    @Getter
+    @Column
+    @Getter     @Setter
     Integer positive;
 
     /**
      * Numero de dis-likes
      */
-    @Getter
+    @Column
+    @Getter     @Setter
     Integer negative;
 
     /**
      * Numero de warnings
      */
-    @Getter
+    @Column
+    @Getter     @Setter
     Integer warning;
+
+    /**
+     * Foto codificada
+     */
+    @Column
+    @Getter     @Setter
+    String foto;
 
 }
